@@ -52,6 +52,14 @@ if [ -z "$APK" ]; then
   exit 1
 fi
 
+# ── publish to GitHub Releases (so the in-app Update button can fetch it) ──────
+echo "Publishing to GitHub Releases..."
+gh release delete latest --yes 2>/dev/null || true
+gh release create latest "$APK" \
+  --title "Latest Build" \
+  --notes "Built from commit: $(git rev-parse --short HEAD) on $(date '+%Y-%m-%d %H:%M')"
+echo "Release published."
+
 # ── install on phone ───────────────────────────────────────────────────────────
 echo "Looking for connected device..."
 DEVICE=$("$ADB" devices | awk '/\tdevice$/{print $1; exit}')
