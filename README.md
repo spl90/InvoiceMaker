@@ -1,6 +1,6 @@
 # Invoice Maker
 
-An Android app for generating contractor proposal and invoice PDFs. Fill out the job details, hit generate, and send it straight to the client.
+Built this for a friend who wanted to digitize his contracting business — no more handwriting proposals, no more printing and scanning. Fill out the job details, hit generate, and send it straight to the client.
 
 ---
 
