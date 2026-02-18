@@ -28,10 +28,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build debug APK
-        # GH_API_TOKEN is a fine-grained PAT (Contents: Read) stored as a repo secret.
-        # It is baked into BuildConfig.GITHUB_TOKEN so the app can fetch private releases.
-        # It is never printed in logs and never committed to git.
-        run: ./gradlew assembleDebug -PghToken=${{ secrets.GH_API_TOKEN }}
+        run: ./gradlew assembleDebug
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
