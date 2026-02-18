@@ -1,0 +1,37 @@
+# Android build outputs
+*.apk
+*.aab
+*.dex
+*.class
+bin/
+gen/
+out/
+build/
+.gradle/
+
+# Local configuration (machine-specific, never commit)
+local.properties
+*.keystore
+*.jks
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Kotlin/Gradle caches
+.kotlin/
+# gradle-wrapper.jar is committed so CI can build without installing Gradle separately
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# Logs
+*.log
+
+# Generated PDFs (runtime output, not source)
+*.pdf

@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod:*)",
+      "Bash(brew list:*)",
+      "Bash(brew install:*)",
+      "Bash(HOMEBREW_NO_AUTO_UPDATE=1 brew install:*)",
+      "Bash(export JAVA_HOME=/opt/homebrew/opt/openjdk@17:*)",
+      "Bash(export PATH=\"$JAVA_HOME/bin:$PATH\")",
+      "Bash(java -version:*)",
+      "Bash(export PATH=\"$JAVA_HOME/bin:/opt/homebrew/bin:$PATH\")",
+      "Bash(gradle wrapper:*)",
+      "Bash(echo:*)",
+      "Bash(export PATH:*)",
+      "Bash(export ANDROID_SDK_ROOT:*)",
+      "Bash(export ANDROID_HOME=\"$HOME/Library/Android/sdk\")",
+      "Bash(__NEW_LINE_082578b1a1f4d5e9__ cd /Users/shannonlarkin/Desktop/InvoiceMaker)",
+      "Bash(./gradlew assembleDebug:*)",
+      "Bash(__NEW_LINE_e77c39f259f30d89__ cd /Users/shannonlarkin/Desktop/InvoiceMaker)",
+      "Bash(export PATH=\"$HOME/Library/Android/sdk/platform-tools:$PATH\")",
+      "Bash(adb devices:*)",
+      "Bash(adb install:*)",
+      "Bash(adb shell am start:*)",
+      "Bash(export PATH=\"$JAVA_HOME/bin:$HOME/Library/Android/sdk/platform-tools:$PATH\")",
+      "Bash(__NEW_LINE_2c42130b9bc715aa__ cd /Users/shannonlarkin/Desktop/InvoiceMaker)",
+      "Bash(__NEW_LINE_36c02d3bab0e9ce8__ cd /Users/shannonlarkin/Desktop/InvoiceMaker)",
+      "Bash(JAVA_HOME=/opt/homebrew/opt/openjdk@17 ANDROID_HOME=\"$HOME/Library/Android/sdk\" PATH=\"/opt/homebrew/opt/openjdk@17/bin:$HOME/Library/Android/sdk/platform-tools:/opt/homebrew/bin:/usr/bin:/bin\" /Users/shannonlarkin/Desktop/InvoiceMaker/gradlew:*)",
+      "Bash(JAVA_HOME=/opt/homebrew/opt/openjdk@17 PATH=\"/opt/homebrew/opt/openjdk@17/bin:/opt/homebrew/bin:/usr/bin:/bin\" /Users/shannonlarkin/Desktop/InvoiceMaker/gradlew:*)",
+      "Bash(PATH=\"$HOME/Library/Android/sdk/platform-tools:/usr/bin:/bin\" adb install:*)",
+      "Bash(PATH=\"$HOME/Library/Android/sdk/platform-tools:/usr/bin:/bin\" adb shell:*)",
+      "Bash(git --version:*)",
+      "Bash(gh:*)",
+      "Bash(git -C /Users/shannonlarkin/Desktop/InvoiceMaker status)",
+      "Bash(git init:*)",
+      "Bash(git config:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
