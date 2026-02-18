@@ -1,21 +1,9 @@
-import java.util.Properties
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
 }
-
-// Read local.properties so the GitHub token never touches git
-val localProps = Properties().apply {
-    val f = rootProject.file("local.properties")
-    if (f.exists()) load(f.reader())
-}
-// CI passes the token via -PghToken=...; local builds use local.properties
-val githubToken: String =
-    findProperty("ghToken")?.toString()
-        ?: localProps.getProperty("github.token", "")
 
 android {
     namespace = "com.example.invoicegen"
@@ -31,7 +19,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "GITHUB_OWNER", "\"spl90\"")
         buildConfigField("String", "GITHUB_REPO", "\"InvoiceMaker\"")
-        buildConfigField("String", "GITHUB_TOKEN", "\"$githubToken\"")
         vectorDrawables {
             useSupportLibrary = true
         }
