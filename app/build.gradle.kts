@@ -17,6 +17,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "GITHUB_OWNER", "\"spl90\"")
+        buildConfigField("String", "GITHUB_REPO", "\"InvoiceMaker\"")
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -43,6 +45,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     composeOptions {

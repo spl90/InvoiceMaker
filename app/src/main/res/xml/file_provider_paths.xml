@@ -2,4 +2,5 @@
 <paths>
     <files-path name="pdfs" path="pdfs/" />
     <cache-path name="logos" path="logos/" />
+    <cache-path name="updates" path="." />
 </paths>

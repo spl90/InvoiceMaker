@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -25,9 +26,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Business
 import androidx.compose.material.icons.filled.Image
 import androidx.compose.material.icons.filled.Save
+import androidx.compose.material.icons.filled.SystemUpdate
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -37,6 +41,7 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import com.example.invoicegen.util.AppUpdater
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -190,6 +195,10 @@ fun BusinessInfoScreen(
                 Spacer(Modifier.width(8.dp))
                 Text("Save Settings")
             }
+
+            HorizontalDivider()
+
+            UpdateSection()
         }
     }
 }
@@ -241,6 +250,70 @@ private fun LogoSection(
                 Spacer(Modifier.width(4.dp))
                 Text("Pick Logo Image")
             }
+        }
+    }
+}
+
+@Composable
+private fun UpdateSection() {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var status by remember { mutableStateOf("") }
+    var isUpdating by remember { mutableStateOf(false) }
+
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text(
+            "App Update",
+            style = MaterialTheme.typography.titleSmall,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.primary
+        )
+        Button(
+            onClick = {
+                if (!isUpdating) {
+                    isUpdating = true
+                    status = "Checking for update..."
+                    scope.launch {
+                        val apkUrl = AppUpdater.getLatestApkUrl()
+                        if (apkUrl == null) {
+                            status = "Could not reach update server. Check your connection."
+                            isUpdating = false
+                            return@launch
+                        }
+                        val apkFile = AppUpdater.downloadApk(context, apkUrl) { progress ->
+                            status = "Downloading... $progress%"
+                        }
+                        if (apkFile == null) {
+                            status = "Download failed. Try again."
+                            isUpdating = false
+                            return@launch
+                        }
+                        status = "Installing — tap Install when prompted."
+                        AppUpdater.install(context, apkFile)
+                        isUpdating = false
+                    }
+                }
+            },
+            enabled = !isUpdating
+        ) {
+            if (isUpdating) {
+                CircularProgressIndicator(modifier = Modifier.size(16.dp), strokeWidth = 2.dp)
+            } else {
+                Icon(Icons.Default.SystemUpdate, contentDescription = null)
+            }
+            Spacer(Modifier.width(8.dp))
+            Text("Update App")
+        }
+        if (status.isNotEmpty()) {
+            Text(
+                status,
+                style = MaterialTheme.typography.bodySmall,
+                color = if (status.contains("fail", ignoreCase = true) ||
+                    status.contains("Could not", ignoreCase = true))
+                    MaterialTheme.colorScheme.error
+                else
+                    MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 }

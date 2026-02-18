@@ -33,7 +33,10 @@
       "Bash(git -C /Users/shannonlarkin/Desktop/InvoiceMaker status)",
       "Bash(git init:*)",
       "Bash(git config:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }
