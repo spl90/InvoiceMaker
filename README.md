@@ -12,6 +12,7 @@ Open this link on your Android phone or tablet:
 
 When Chrome asks if you want to allow installs from unknown sources, say yes. One-time thing.
 
+APPLE VERSION COMING SOON
 ---
 
 ## What it does
