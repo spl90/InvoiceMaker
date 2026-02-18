@@ -274,7 +274,7 @@ private fun UpdateSection() {
                     isUpdating = true
                     status = "Checking for update..."
                     scope.launch {
-                        val apkUrl = AppUpdater.getLatestApkUrl()
+                        val apkUrl = AppUpdater.getLatestAssetUrl()
                         if (apkUrl == null) {
                             status = "Could not reach update server. Check your connection."
                             isUpdating = false
