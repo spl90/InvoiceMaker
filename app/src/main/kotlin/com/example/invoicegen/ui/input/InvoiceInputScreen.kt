@@ -219,14 +219,21 @@ private fun DocumentTypeSection(
     selected: DocumentType,
     onSelect: (DocumentType) -> Unit
 ) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
+    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Text("Document Type:", style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
-        Spacer(Modifier.width(16.dp))
-        RadioButton(selected = selected == DocumentType.PROPOSAL, onClick = { onSelect(DocumentType.PROPOSAL) })
-        Text("Proposal")
-        Spacer(Modifier.width(16.dp))
-        RadioButton(selected = selected == DocumentType.CONTRACT, onClick = { onSelect(DocumentType.CONTRACT) })
-        Text("Contract")
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                selected = selected == DocumentType.PROPOSAL,
+                onClick = { onSelect(DocumentType.PROPOSAL) }
+            )
+            Text("Proposal", maxLines = 1)
+            Spacer(Modifier.width(24.dp))
+            RadioButton(
+                selected = selected == DocumentType.CONTRACT,
+                onClick = { onSelect(DocumentType.CONTRACT) }
+            )
+            Text("Contract", maxLines = 1)
+        }
     }
 }
 
